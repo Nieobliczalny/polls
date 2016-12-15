@@ -1,0 +1,30 @@
+<div ng-repeat="poll in polls">
+	<h1>{{poll.name}}</h1>
+	<span ng-show="poll.author_id">{{poll.author_name}}</span>
+	<div ng-repeat="question in poll.questions">
+		<h2>{{question.text}}</h2>
+		<div ng-repeat="answer in question.answers">
+			<div ng-if="question.type == 1">
+				<select ng-model="answer.text" ng-options="item as item for item in answer.data"></select>
+			</div>
+			<div ng-if="question.type == 2" class="table">
+				<div class="row">
+					<div class="col-md-1" ng-repeat="value in answer.data">
+						<label><input type="radio" name="chk_{{answer.id}}" ng-model="answer.text" value="{{value}}" /> {{value}} </label>
+					</div>
+				</div>
+			</div>
+			<div ng-if="question.type == 3"><textarea ng-model="answer.text"></textarea></div>
+			<div ng-if="question.type == 4">
+				<div class="row">
+					<div class="col-md-1"><b>{{answer.data.text}}</b>:</div>
+					<div class="col-md-1" ng-repeat="value in answer.data.options">
+						<label><input type="radio" name="chk_{{answer.id}}" ng-model="answer.text" value="{{value}}" /> {{value}} </label>
+					</div>
+					<div class="col-md-1" ng-show="answer.data.custom"><label><input type="radio" name="chk_{{answer.id}}" ng-model="answer.text" value="{{value}}" /> inna odpowiedź: </label><input type="text" ng-model="answer.textOther" /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button ng-click="sendAnswer(poll)">Prześlij odpowiedź</button>
+</div>

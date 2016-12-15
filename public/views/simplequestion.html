@@ -1,0 +1,6 @@
+<div class="form-group" ng-class="{ 'has-error': required && !isValid, 'has-warning': !required && !isValid }">
+    <label class="control-label col-sm-2 question-label" for="simple_question_{{::$id}}">{{question}}</label>
+    <div class="col-sm-10">
+        <input class="form-control" name="" id="simple_question_{{::$id}}" ng-model="value" type="{{type}}" min="{{min}}" max="{{max}}" step="{{step}}" ng-pattern="'{{pattern}}'" ng-required="{{required}}">
+    </div>
+</div>

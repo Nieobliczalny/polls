@@ -1,0 +1,6 @@
+<div class="form-group" ng-class="{ 'has-error': required && !isValid, 'has-warning': !required && !isValid }">
+    <label class="control-label col-sm-2 question-label" for="free_text_question_{{::$id}}">{{question}}</label>
+    <div class="col-sm-10">
+        <textarea class="form-control" id="free_text_question_{{::$id}}" ng-model="value" ng-required="{{required}}"></textarea>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<h3>Twoje ankiety</h3>
+<ul>
+    <li ng-repeat="poll in polls">
+        {{poll.name}}
+        <a class="btn btn-primary" href="#/editpoll/{{poll.id}}">Edytuj</a>
+        <a class="btn btn-danger" href="#/deletepoll/{{poll.id}}">Usuń</a>
+    </li>
+</ul>

@@ -1,0 +1,24 @@
+<span ng-repeat="poll in polls track by $index">
+	<a href="#/poll/{{poll.id}}">{{poll.name}}</a>
+<br>
+</span> 
+<a href="#/createpoll">Dodaj ankietę</a>
+<a href="#/polls">Twoje ankiety</a>
+<!--
+<form name="form" ng-submit="postForm()">
+<free-text-question question="'Test question'" required="true" ng-model="q1"></free-text-question>
+<input type="text" ng-model="q1">
+{{form.$valid}}<br>
+Q2: {{q2}}<br>
+<select-question question="'Test question'" required="true" ng-model="q2" multiple="true" options="tmp"></select-question>
+Q3: {{q3}}<br>
+<table-question question="'Test question'" required="true" ng-model="q3" multiple="true" options="[{question: 'T1', allowCustomValue: true, answers: [{value: 'v1', text: 'VVV1'}, {value: 'v2', text: 'VVV2'}]}, {question: 'T2', answers: [{value: 'e1', text: 'VVeV1'}, {value: 'e2', text: 'VVeV2'}]}]"></table-question>
+Q4: {{q4}}<br>
+<range-question question="'Test question'" required="true" ng-model="q4" min="1" max="10" step="0.1" type="'number'"></range-question>
+Q5: <input type="text" ng-model="q5"><br>
+<simple-question question="'Test question'" required="true" regex="'[a-zA-Z]+'" ng-model="q5" min="1" max="10" step="0.1" type="'text'"></simple-question>
+Q6: {{q6}}<br>
+<row-selection-question question="'Test question'" required="true" ng-model="q6"  multiple="true" allow-custom-value="true" options="[{value: 'v1', text: 'VVV1'}, {value: 'v2', text: 'VVV2'}, {value: 'e1', text: 'VVeV1'}, {value: 'e2', text: 'VVeV2'}]"></row-selection-question>
+<input type="submit" value="OK" ng-click="printScope()">
+</form>
+-->

@@ -1,0 +1,34 @@
+<h3>Edycja ankiety</h3>
+<form name="editpoll" ng-submit="editPollName()">
+    <simple-question question="'Nazwa ankiety'" required="true" ng-model="poll.name" type="'text'"></simple-question>
+    <input type="submit" value="Zapisz" class="btn btn-primary">
+</form>
+<h3>Pytania</h3>
+<h4>Dodaj</h4>
+<button class="btn btn-primary" ng-click="addQuestion(1)">Dowolny tekst</button>
+<button class="btn btn-primary" ng-click="addQuestion(2)">Zakres</button>
+<button class="btn btn-primary" ng-click="addQuestion(3)">Wiersz wyboru</button>
+<button class="btn btn-primary" ng-click="addQuestion(4)">Wybór z listy</button>
+<button class="btn btn-primary" ng-click="addQuestion(5)">Pojedyncze pole</button>
+<button class="btn btn-primary" ng-click="addQuestion(6)">Tabela wyboru</button>
+
+<div ng-repeat="question in poll.questions">
+    <div ng-if="question.type == 1">
+        <free-text-question question="question.question" required="{{question.required}}" ng-model="questionModel[$index]"></free-text-question>
+    </div>
+    <div ng-if="question.type == 2">
+        <range-question question="question.question" required="{{question.required}}" ng-model="questionModel[$index]" min="{{question.min}}" max="{{question.min}}" step="{{question.step}}" type="question.inputtype"></range-question>
+    </div>
+    <div ng-if="question.type == 3">
+        <row-selection-question question="question.question" required="{{question.required}}" ng-model="questionModel[$index]"  multiple="{{question.multiple}}" allow-custom-value="{{question.allowcustomvalue}}" options="question.answers"></row-selection-question>
+    </div>
+    <div ng-if="question.type == 4">
+        <select-question question="question.question" required="{{question.required}}" ng-model="questionModel[$index]" multiple="{{question.multiple}}}" options="question.answers"></select-question>
+    </div>
+    <div ng-if="question.type == 5">
+        <simple-question question="question.question" required="{{question.required}}" regex="{{question.required}}" ng-model="questionModel[$index]" min="{{question.min}}" max="{{question.min}}" step="{{question.step}}" type="question.inputtype"></simple-question>
+    </div>
+    <div ng-if="question.type == 6">
+        <table-question question="question.question" required="{{question.required}}" ng-model="questionModel[$index]" multiple="{{question.multiple}}}" options="question.answers"></table-question>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="form-group" ng-class="{ 'has-error': required && !isValid, 'has-warning': !required && !isValid }">
+    <label class="control-label col-sm-2 question-label" for="select_question_{{::$id}}">{{question}}</label>
+    <div class="col-sm-10">
+        <select class="form-control" id="select_question_{{::$id}}" ng-required="{{required}}">
+            <option ng-repeat="option in options" value="{{option.value}}">{{option.text}}</option>
+        </select>
+    </div>
+</div>

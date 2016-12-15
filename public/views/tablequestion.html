@@ -1,0 +1,24 @@
+<div class="form-group" ng-class="{ 'has-error': required && !isValidTotal, 'has-warning': !required && !isValidTotal }">
+    <div class="row col-sm-12">
+        <label class="control-label">{{question}}</label>
+    </div>
+</div>
+<div class="form-group row row-no-margin" ng-repeat="row in options" ng-class="{ 'has-error': $parent.required && !isValid[$index], 'has-warning': !$parent.required && !isValid[$index] }">
+    <label class="control-label col-sm-2 question-label">{{row.question}}</label>
+    <div class="col-sm-10" ng-show="$parent.multiple">
+        <label class="checkbox-inline" ng-repeat="option in row.answers">
+            <input type="checkbox" data-row="{{$parent.$index}}" data-column="{{$index}}" value="{{option.value}}" class="table_question_{{$parent.$parent.$id}}_{{$parent.$index}}_{{$index}}">{{option.text}}
+        </label>
+        <label class="checkbox-inline ng-binding ng-scope form-inline input-inline-fix" ng-show="row.allowCustomValue">
+            <input data-row="{{$index}}" value="" class="table_question_{{$parent.$id}}_{{$index}}_custom" type="checkbox">Inna odpowiedź: <input class="form-control table_question_{{$parent.$id}}_{{$index}}_custom_value" type="text" data-row="{{$index}}">
+        </label>
+    </div>
+    <div class="col-sm-10" ng-show="!$parent.multiple">
+        <label class="radio-inline" ng-repeat="option in row.answers">
+            <input type="radio" data-row="{{$parent.$index}}" data-column="{{$index}}" value="{{option.value}}" name="radio_{{::$parent.$id}}_{{$parent.$index}}" class="table_question_{{$parent.$parent.$id}}_{{$parent.$index}}_{{$index}}">{{option.text}}
+        </label>
+        <label class="radio-inline ng-binding ng-scope form-inline input-inline-fix" ng-show="row.allowCustomValue">
+            <input data-row="{{$index}}" value="" class="table_question_{{$parent.$id}}_{{$index}}_custom" type="radio" name="radio_{{::$id}}_{{$index}}">Inna odpowiedź: <input class="form-control table_question_{{$parent.$id}}_{{$index}}_custom_value" type="text" data-row="{{$index}}">
+        </label>
+    </div>
+</div>

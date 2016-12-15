@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.input-inline-fix input[type=checkbox], .input-inline-fix input[type=radio]{
+  margin-top: 11px;
+}
+.question-label {
+  text-align: right;
+  padding-top: 6px;
+}
+.row-no-margin {
+  margin-left: 0px;
+  margin-right: 0px;
+}

@@ -1,0 +1,34 @@
+Nazwa ankiety: <input type="text" ng-model="pollName"><br>
+Pytania: <button ng-click="addSelect()">Dodaj pytanie z listą wyboru</button> | <button ng-click="addRadio()">Dodaj pytanie z wierszem wyboru</button>
+ | <button ng-click="addFreeText()">Dodaj pytanie z dowolnym tekstem</button> | <button ng-click="addTable()">Dodaj pytanie z tabelą wyboru</button><br>
+<div ng-repeat="question in questions track by $index">
+	{{$index + 1}}. <input type="text" ng-model="question.text" /> <button ng-click="removeQuestion(question)">Usuń pytanie</button><br>
+	<div ng-switch on="question.type">
+		<div ng-switch-when="1">
+			<div ng-repeat="option in question.answers track by $index">
+				<input type="text" ng-model="option.text" /><button ng-click="removeAnswer(question, option)">Usuń</button><br>
+			</div>
+			<button ng-click="addAnswer(question)">Dodaj</button><br>
+		</div>
+		<div ng-switch-when="2">
+			<div ng-repeat="option in question.answers track by $index">
+				<input type="text" ng-model="option.text" /><button ng-click="removeAnswer(question, option)">Usuń</button><br>
+			</div>
+			<button ng-click="addAnswer(question)">Dodaj</button><br>
+		</div>
+		<div ng-switch-when="3">Dowolna odpowiedź użytkownika</div>
+		<div ng-switch-when="4">
+			<div ng-repeat="answer in question.answers track by $index">
+				<input type="text" ng-model="answer.text" /><br>
+				<label><input type="checkbox" name="chk_{{$parent.$index}}_{{$index}}" ng-model="answer.custom"> Zezwól na wpisanie własnej wartości</label><br>
+				<div ng-repeat="option in answer.options track by $index">
+					<input type="text" ng-model="option.text" /><button ng-click="removeSubAnswer(answer, option)">Usuń</button><br>
+				</div>
+				<button ng-click="addSubAnswer(answer)">Dodaj opcję</button>
+				<button ng-click="removeRow(question, answer)">Usuń wiersz</button><br>
+			</div>
+			<button ng-click="addRow(question);">Dodaj wiersz</button><br>
+		</div>
+	</div>
+</div>
+<button ng-click="save()">Wyślij</button>
